@@ -1,4 +1,5 @@
 # disqus_box
+<<<<<<< HEAD
 
 Assignment for developing&#x2F;Creating a Disqus Style Commenting System
 
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+Assignment for developing / creating a disqus style commenting box
+>>>>>>> 49239849cca9a2a76e9aeddffa2fe38eec3c8181
