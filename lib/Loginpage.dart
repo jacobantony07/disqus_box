@@ -64,11 +64,11 @@ class _LoginpageState extends State<Loginpage> {
                           children: <Widget>[
                             Text(
                               "Posts",
-                              style: LoginpageHeading,
+                              style: loginPageHeading,
                             ),
                             Text(
                               " for Days",
-                              style: LoginpageHeading,
+                              style: loginPageHeading,
                             )
                           ],
                         ),
@@ -168,7 +168,7 @@ class _LoginpageState extends State<Loginpage> {
                         FlatButton(
                           child: Text(
                             "Sign up",
-                            style: LoginpagesubHeading,
+                            style: loginPageSubHeading,
                           ),
                         ),
                         SizedBox(
@@ -185,7 +185,7 @@ class _LoginpageState extends State<Loginpage> {
                         FlatButton(
                           child: Text(
                             "Forgot Password",
-                            style: LoginpagesubHeading,
+                            style: loginPageSubHeading,
                           ),
                         ),
                       ],

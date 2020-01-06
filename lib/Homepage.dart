@@ -1,7 +1,6 @@
 import 'package:disqus_box/mainTheme.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
-import 'postdata.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,12 +18,21 @@ class _HomePageState extends State<HomePage> {
     "assets/images/quotes.png",
   ];
 
+  List<String> posts = [
+    "assets/images/post1.jpg",
+    "assets/images/post2.jpg",
+  ];
+
   List<String> categorytitle = [
     "Travel",
     "Health",
     "DIY",
     "Food ",
     "Quotes",
+  ];
+  List<String> postcaptions = [
+    "en Route berlin!",
+    "Godzilla",
   ];
 
   Widget _buildCarousel(BuildContext context, int carouselIndex) {
@@ -34,11 +42,13 @@ class _HomePageState extends State<HomePage> {
         //Text('Carousel $carouselIndex'),
         SizedBox(
           // you may want to use an aspect ratio here for tablet support
-          height: 300.0,
+          height: 400.0,
           width: 350,
           child: PageView.builder(
+            physics: BouncingScrollPhysics(),
+            itemCount: 2,
             // store this controller in a State to save the carousel scroll position
-            controller: PageController(viewportFraction: 0.8),
+            controller: PageController(viewportFraction: 0.9),
             itemBuilder: (BuildContext context, int itemIndex) {
               return _buildCarouselItem(context, carouselIndex, itemIndex);
             },
@@ -48,18 +58,84 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildCarouselItem(BuildContext context, int carouselIndex, int itemIndex) {
+  Widget _buildCarouselItem(
+      BuildContext context, int carouselIndex, int itemIndex) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+        child: Stack(
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                posts[itemIndex],
+                fit: BoxFit.fill,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, top: 30),
+              child: Container(
+                width: double.maxFinite,
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      height: 50,
+                      width: 50,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                        child: Image.asset(
+                          "assets/images/wallpaper3.jpg",
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      "Thomas Hofstader",
+                      style: userName,
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 120.0, left: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      postcaptions[itemIndex],
+                      style: captions,
+                    ),
+                    SizedBox(
+                      height: 200,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(right:20.0),
+                          child: FlatButton(onPressed: () {  },
+                          child: Icon(Icons.message,color: Colors.white,size: 30,),),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +163,7 @@ class _HomePageState extends State<HomePage> {
             child: Container(
               child: Text(
                 "Hello!",
-                style: LoginpageHeading,
+                style: loginPageHeading,
               ),
             ),
           ),
@@ -103,66 +179,61 @@ class _HomePageState extends State<HomePage> {
                   itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
+                      padding: const EdgeInsets.only(left: 20.0),
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25)),
                         height: 100,
                         width: 180,
-                        child: Stack(
-                          children:<Widget>[
-                            Opacity(
-                              opacity: 0.9,
-                              child: ClipRRect(
-                                borderRadius:
-                                BorderRadius.all(
-                                    Radius.circular(15)),
-                                child: Image
-                                    .asset(
-                                  categoryimages[index],
+                        child: Stack(children: <Widget>[
+                          Opacity(
+                            opacity: 0.9,
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)),
+                              child: Image.asset(
+                                categoryimages[index],
 
-                                  // fit: BoxFit.fill,
-                                ),
+                                // fit: BoxFit.fill,
                               ),
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              //crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      categorytitle[index],
-                                      style: Categories,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ]
-                        ),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            //crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    categorytitle[index],
+                                    style: categoriesFont,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ]),
                       ),
                     );
                   }),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top:300,left:00.0),
+            padding: const EdgeInsets.only(top: 300, left: 00.0),
             child: Container(
-              height: 300,
+              height: 400,
               width: 400,
-             // decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20)),
+              // decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20)),
               child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   physics: BouncingScrollPhysics(),
                   itemCount: 1,
                   itemBuilder: (BuildContext context, int index) {
-                    if( index % 2 == 0){
-                      return _buildCarousel(context, index ~/ 2);
-                    }
-                    else{
+                    if (index % 2 == 0) {
+                      return _buildCarousel(context, 1);
+                    } else {
                       return Divider();
                     }
                   }),
@@ -172,6 +243,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
 }
-
