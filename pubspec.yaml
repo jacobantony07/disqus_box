@@ -20,6 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  beauty_textfield: 0.0.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -27,6 +28,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 
 # For information on the generic Dart part of this file, see the
@@ -40,6 +42,45 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  fonts:
+    - family: RaleWay
+      fonts:
+        - asset: assets/fonts/Raleway-Black.ttf
+        - asset: assets/fonts/Raleway-BlackItalic.ttf
+        - asset: assets/fonts/Raleway-Bold.ttf
+        - asset: assets/fonts/Raleway-BoldItalic.ttf
+        - asset: assets/fonts/Raleway-ExtraBold.ttf
+        - asset: assets/fonts/Raleway-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Raleway-Light.ttf
+        - asset: assets/fonts/Raleway-LightItalic.ttf
+        - asset: assets/fonts/Raleway-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Raleway-MediumItalic.ttf
+        - asset: assets/fonts/Raleway-SemiBold.ttf
+        - asset: assets/fonts/Raleway-SemiBoldItalic.ttf
+        - asset: assets/fonts/Raleway-Thin.ttf
+        - asset: assets/fonts/Raleway-ThinItalic.ttf
+
+
+  assets:
+    - assets/images/flat.jpg
+    - assets/images/wallpaper1.jpg
+    - assets/images/wallpaper2.jpg
+    - assets/images/wallpaper3.jpg
+    - assets/images/wallpaper4.jpg
+    - assets/images/wallpaper5.jpg
+    - assets/images/wallpaper6.jpg
+    - assets/images/wallpaper7.jpg
+    - assets/images/wallpaper8.jpg
+    - assets/images/wallpaper9.jpg
+    - assets/images/wallpaper10.jpg
+    - assets/images/wallpaper11.jpg
+    - assets/images/wallpaper12.jpg
+    - assets/images/travel.jpg
+    - assets/images/Health.jpg
+    - assets/images/DIY.jpg
+    - assets/images/foodanddrinks.jpg
+    - assets/images/quotes.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
