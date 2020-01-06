@@ -1,4 +1,5 @@
 import 'package:disqus_box/mainTheme.dart';
+import 'package:disqus_box/postPage.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
@@ -122,7 +123,17 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(right:20.0),
-                          child: FlatButton(onPressed: () {  },
+                          child: FlatButton(onPressed: ()async {var navigationResult =
+                          await Navigator.push(
+                              context,
+                              new MaterialPageRoute(
+                                builder: (context) =>
+                                    postPage(),
+                              ));
+
+                          if (navigationResult == true) {
+                            return null;
+                          }  },
                           child: Icon(Icons.message,color: Colors.white,size: 30,),),
                         )
                       ],

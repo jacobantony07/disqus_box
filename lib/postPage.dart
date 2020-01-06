@@ -8,8 +8,32 @@ class postPage extends StatefulWidget {
 class _postPageState extends State<postPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(),
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverAppBar(
+          expandedHeight: 200,
+          flexibleSpace: FlexibleSpaceBar(
+            background: Image.asset(
+              "assets/images/post1.jpg",
+              fit: BoxFit.fill,
+            ),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate((context, index) {
+            return Container(
+              child: Column(
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset("assets/images/wallpaper1.jpg"),
+                  )
+                ],
+              ),
+            );
+          }),
+        )
+      ],
     );
   }
 }

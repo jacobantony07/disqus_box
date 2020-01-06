@@ -13,9 +13,9 @@ TextStyle loginPageSubHeading = TextStyle(
   fontWeight: FontWeight.w400
 );
 TextStyle categoriesFont = TextStyle(
-    color: Colors.white, fontSize: 35,
+    color: Colors.white, fontSize: 32,
     fontFamily: 'RaleWay',
-    fontWeight: FontWeight.w800
+    fontWeight: FontWeight.w700
 );
 TextStyle userName = TextStyle(
     color: Colors.white, fontSize: 16,
