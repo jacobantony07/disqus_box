@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List categories = new List();
-
+/*Created a Bunch of List's so that i could display different data's when i am using a listView*/
   List<String> categoryimages = [
     "assets/images/travel.jpg",
     "assets/images/Health.jpg",
@@ -40,15 +40,13 @@ class _HomePageState extends State<HomePage> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        //Text('Carousel $carouselIndex'),
+       /*This is for the carousel used in the Homepage which when pressed or tapped leads to the dummy post page with a few UI details*/
         SizedBox(
-          // you may want to use an aspect ratio here for tablet support
           height: 400.0,
           width: 350,
           child: PageView.builder(
             physics: BouncingScrollPhysics(),
             itemCount: 2,
-            // store this controller in a State to save the carousel scroll position
             controller: PageController(viewportFraction: 0.9),
             itemBuilder: (BuildContext context, int itemIndex) {
               return _buildCarouselItem(context, carouselIndex, itemIndex);
@@ -66,12 +64,27 @@ class _HomePageState extends State<HomePage> {
       child: Container(
         child: Stack(
           children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                posts[itemIndex],
-                fit: BoxFit.fill,
+            InkWell(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  posts[itemIndex],
+                  fit: BoxFit.fill,
+                ),
               ),
+              onTap: () async {
+                var navigationResult =
+                    await Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) =>
+                          postPage(),
+                    ));
+
+                if (navigationResult == true) {
+                  return null;
+                }
+              },
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 30),

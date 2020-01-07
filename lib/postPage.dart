@@ -1,3 +1,6 @@
+import 'package:disqus_box/mainTheme.dart';
+import 'package:disqus_box/postPage_content.dart';
+import 'package:disqus_box/postPage_header.dart';
 import 'package:flutter/material.dart';
 
 class postPage extends StatefulWidget {
@@ -8,32 +11,46 @@ class postPage extends StatefulWidget {
 class _postPageState extends State<postPage> {
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          expandedHeight: 200,
-          flexibleSpace: FlexibleSpaceBar(
-            background: Image.asset(
-              "assets/images/post1.jpg",
-              fit: BoxFit.fill,
+
+    /*Main Page of Post Page but separated into 3 different classes(Header/content)*/
+    return Scaffold(
+        body: Stack(
+          children: <Widget>[
+            /*Sliver components require CustomScrollView to function*/
+            CustomScrollView(
+              slivers: <Widget>[
+                SliverAppBar(
+                  backgroundColor: Colors.black,
+                  pinned: true,
+                ),
+                SliverPersistentHeader(
+                  pinned: false,
+                  floating: false,
+                  delegate: postPageHeader(
+                    minExtent: 250.0,
+                    maxExtent: 250.0,
+                  ),
+                ),
+                postPageContent(),
+              ],
             ),
-          ),
+          ],
         ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate((context, index) {
-            return Container(
-              child: Column(
-                children: <Widget>[
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.asset("assets/images/wallpaper1.jpg"),
-                  )
-                ],
-              ),
-            );
-          }),
-        )
-      ],
-    );
+        bottomNavigationBar: Padding(
+          padding: MediaQuery.of(context).viewInsets,
+          child: Container(
+              color: Colors.black87,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20.0, top: 10),
+                child: TextFormField(
+                  style: commentingBox,
+                  maxLines: 2,
+                  decoration: InputDecoration(
+                      focusColor: Colors.black87,
+                      hintText: "Comment here",
+                      hintStyle: commentingHint),
+                ),
+              )),
+        ));
   }
 }

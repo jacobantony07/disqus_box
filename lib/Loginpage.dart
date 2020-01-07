@@ -25,7 +25,7 @@ class _LoginpageState extends State<Loginpage> {
     final double _Botheight = _Topheight - 200;
     final double _height = logicalSize.height;
     final double _width = logicalSize.width;
-
+/*This is the Login Page Scaffolding with just the UI part*/
     return Scaffold(
       body: Stack(
         children: <Widget>[
