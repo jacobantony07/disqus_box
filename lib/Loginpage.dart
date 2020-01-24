@@ -135,6 +135,7 @@ class _LoginpageState extends State<Loginpage> {
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 10, horizontal: 10.0),
                                   child: FloatingActionButton(
+                                    key: ValueKey('loginBtn'),
                                     backgroundColor: Colors.white,
                                     child: Icon(
                                       Icons.arrow_forward,

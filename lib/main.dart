@@ -1,8 +1,10 @@
-import 'package:disqus_box/Homepage.dart';
 import 'package:disqus_box/Loginpage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_driver/driver_extension.dart';
 
-void main() => runApp(MyApp());
+void main(){
+  enableFlutterDriverExtension();
+  runApp(MyApp());}
 
 class MyApp extends StatelessWidget {
 

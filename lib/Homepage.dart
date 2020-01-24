@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
        /*This is for the carousel used in the Homepage which when pressed or tapped leads to the dummy post page with a few UI details*/
         SizedBox(
           height: 400.0,
-          width: 350,
+          width: 380,
           child: PageView.builder(
             physics: BouncingScrollPhysics(),
             itemCount: 2,
@@ -185,9 +185,23 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
             child: Container(
-              child: Text(
-                "Hello!",
-                style: loginPageHeading,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "Hello!",
+                    style: loginPageHeading,
+                  ),
+                  FlatButton(
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                    "Logout",
+                    style: captions,
+                  ),
+                  )
+                ],
               ),
             ),
           ),
@@ -244,10 +258,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 300, left: 00.0),
+            padding: const EdgeInsets.only(top: 300, left: 0.0),
             child: Container(
               height: 400,
-              width: 400,
+              width: 500,
               // decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20)),
               child: ListView.builder(
                   shrinkWrap: true,

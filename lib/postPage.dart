@@ -26,7 +26,7 @@ class _postPageState extends State<postPage> {
                 SliverPersistentHeader(
                   pinned: false,
                   floating: false,
-                  delegate: postPageHeader(
+                  delegate: PostPageHeader(
                     minExtent: 250.0,
                     maxExtent: 250.0,
                   ),
@@ -42,7 +42,7 @@ class _postPageState extends State<postPage> {
               color: Colors.black87,
               child: Padding(
                 padding: const EdgeInsets.only(left: 20.0, top: 10),
-                child: TextFormField(
+                child: TextField(
                   style: commentingBox,
                   maxLines: 2,
                   decoration: InputDecoration(

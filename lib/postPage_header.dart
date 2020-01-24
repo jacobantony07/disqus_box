@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/rendering/sliver_persistent_header.dart';
 
-class postPageHeader implements SliverPersistentHeaderDelegate{
+class PostPageHeader implements SliverPersistentHeaderDelegate{
 
-  postPageHeader({
+  PostPageHeader({
     this.minExtent,
     this.maxExtent,
   });
@@ -34,8 +34,4 @@ class postPageHeader implements SliverPersistentHeaderDelegate{
   @override
   // TODO: implement snapConfiguration
   FloatingHeaderSnapConfiguration get snapConfiguration => null;
-
-  @override
-  // TODO: implement stretchConfiguration
-  OverScrollHeaderStretchConfiguration get stretchConfiguration => null;
 }

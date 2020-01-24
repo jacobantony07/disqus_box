@@ -8,9 +8,41 @@ class postPageContent extends StatefulWidget {
 
 class _postPageContentState extends State<postPageContent> {
   List Comments = new List();
+
+  int likes = 30;
+  int dislikes = 10;
+  Color upvotestatecolor;
+  Color downvotestatecolor;
+  bool postupvoted;
+  bool postdownvoted;
+  
+  @override
   void initState(){
    super.initState();
+   postupvoted = false;
+    postdownvoted = false;
+    upvotestatecolor = Colors.white;
+    downvotestatecolor = Colors.white;
   }
+  
+  void upvotesanddownvotesCounter(String state){
+    switch(state){
+      case "upvoted" : postupvoted = true;setState(() {
+        upvotestatecolor = Colors.green;
+      }); likes++ ;break;
+      case "un-upvoted" : postupvoted = false;setState(() {
+        upvotestatecolor = Colors.white;
+      });likes--;break;
+      case "downvoted" : postdownvoted = true;setState(() {
+        downvotestatecolor = Colors.red;
+      }); dislikes++;break;
+      case "un-downvoted" : postdownvoted = false;setState(() {
+        downvotestatecolor = Colors.white;
+      }); dislikes--;break;
+    }
+      }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +82,46 @@ class _postPageContentState extends State<postPageContent> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Icon(Icons.arrow_upward,color: Colors.white,),
-                      Icon(Icons.arrow_downward,color: Colors.white,),
-                      Icon(Icons.message,color: Colors.white,)
+                      Row(
+                        children: <Widget>[
+                          IconButton(icon: Icon(Icons.arrow_upward,color: upvotestatecolor), onPressed: () {
+                            if(postupvoted == false){
+                               print("upvoted");
+                              upvotesanddownvotesCounter("upvoted");
+                            }
+                            else{
+                               print("un-upvoted");
+                              upvotesanddownvotesCounter("un-upvoted");
+                            }
+                          },),
+                          SizedBox(width: 10,),
+                          Text(likes.toString(),style:userName,),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                      IconButton(icon: Icon(Icons.arrow_downward,color: downvotestatecolor), onPressed: () {
+                        if(postdownvoted == false){
+                              print("downvoted");
+                              upvotesanddownvotesCounter("downvoted");
+                          
+                            }
+                            else{
+                               print("un-downvoted");
+                              upvotesanddownvotesCounter("un-downvoted");
+                            }
+                      },),
+                          SizedBox(width: 10,),
+                          Text(dislikes.toString(),style:userName,),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Icon(Icons.message,color: Colors.white,),
+                          SizedBox(width: 10,),
+                          Text('1',style:userName,),
+                        ],
+                      )
                     ],
                   ),
                 ),
